@@ -1,0 +1,10 @@
+<h1>Journal</h1>
+
+</br><a href="/index">Back</a></br>
+
+</br><a data-method="delete" href="/journal/destroy">Delete journal</a></br></br>
+
+
+<% @requests.each do |request| %> 
+	<%= request.lang %>  <%= request.text %><br/>
+<% end %>

@@ -1,5 +1,3 @@
-require 'dictionary_api'
-
 class DictionaryController < ApplicationController
 
 	def index
@@ -18,7 +16,18 @@ class DictionaryController < ApplicationController
 			@articles = dictionary.lookup(params[:lang], params[:text])
 		rescue Exception => error
 			render :text => error.message
-		end
+		else
+			Request.create(lang: params[:lang],text: params[:text])
+		end		
+	end
+
+	def journal
+		@requests = Request.all
+	end
+
+	def destroy
+		Request.destroy_all
+		redirect_to action: "index"
 	end
 
 	protected
