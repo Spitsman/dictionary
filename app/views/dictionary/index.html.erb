@@ -1,15 +1,32 @@
 <h1> Yandex Dictionary</h1>
 
-<form accept-charset="UTF-8" action="/lookup" method="get">
+<form accept-charset="UTF-8" action="/lookup" method="post">
+	<input name="authenticity_token" type="hidden" value="228papirosim">
   <label for="lang">Lang:</label>
-  <input id="lang" name="lang" type="text" /></br>
+	<p>
+		<select name="lang">
+			<option selected="selected">en-ru</option>
+			<% @langs.map do |lang| %>
+				<option><%= lang %></option>
+			<% end %>
+		</select>
+	</p>
+
   <label for="text">Text:</label>
-  <input id="text" name="text" type="text" /></br>
+  <p><textarea rows="3" cols="45" name="text"></textarea></p>
+
   <input name="commit" type="submit" value="Search" />
 </form>
+</br>
 
-</br><a href="/get_langs">List of translate directions</a></br></br>
+<p>Last 10 requests:</p>
+<% @last.reverse_each do |request| %>
+	<%= request.lang %>  <%= request.text %><br/>
+<% end %>
 
-<a href="/journal">Journal</a></br></br>
 
-Реализовано с помощью сервиса <a href="http://api.yandex.ru/dictionary/">«Яндекс.Словарь»</a>
+</br><a href="/journal">Journal</a></br></br>
+
+<center>
+	Реализовано с помощью сервиса <a href="http://api.yandex.ru/dictionary/">«Яндекс.Словарь»</a>
+<center>

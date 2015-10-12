@@ -2,6 +2,8 @@
 
 <a href="/index">Back</a></br></br>
 
+<%= params[:text].gsub("%20", " ")  if @articles.empty? %>
+
 <% @articles.each do |art| %>
 	text: <%= art.text %> <br/>	
 	position: <%= art.position %> <br/>
