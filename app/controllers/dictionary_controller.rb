@@ -1,5 +1,7 @@
 class DictionaryController < ApplicationController
 
+  before_action :require_user
+
   def index
     begin
       @langs = dictionary.get_langs
