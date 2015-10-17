@@ -18,29 +18,29 @@ class DictionaryController < ApplicationController
     rescue Exception => error
       render :text => error.message
     else
-      Request.create(lang: params[:lang],text: params[:text].gsub("%20", " "))
+      current_user.requests.create(lang: params[:lang],text: params[:text].gsub("%20", " "))
     end   
   end
 
   def journal
-    @requests = Request.all
+    @requests = current_user.requests.all
   end
 
   def destroy
-    Request.destroy_all
+    current_user.requests.destroy_all
     redirect_to action: "index"
   end
 
   protected
 
   def last_requests
-    size = Request.all.size
+    size = current_user.requests.size
     last = []
     if size < 10
-      last = Request.all
+      last = current_user.requests
     else
       for i in size - 10 ... size
-        last << Request.all[i]
+        last << current_user.requests[i]
       end
     end
     last
