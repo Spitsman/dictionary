@@ -18,7 +18,7 @@ class DictionaryController < ApplicationController
     rescue Exception => error
       render :text => error.message
     else
-      current_user.requests.create(lang: params[:lang],text: params[:text].gsub("%20", " "))
+      current_user.requests.create(extract_data.merge({lang: params[:lang], text: params[:text].gsub("%20", " ")}))
     end   
   end
 
@@ -32,6 +32,18 @@ class DictionaryController < ApplicationController
   end
 
   protected
+
+  def extract_data
+    texts = @articles.inject("") { |result, element| result << element.text << ' ' }  
+    positions = @articles.inject("") { |result, element| result << element.position << ' ' } 
+    transcriptions = @articles.inject("") { |result, element| result << element.transcription << ' ' } 
+    translation_texts = @articles.inject("") do |result, element| 
+      result << element.translation.inject("") { |res, el| res << el.text << ', ' }
+      result << '; ' 
+    end
+    {texts: texts, positions: positions, transcriptions: transcriptions, translation_texts: translation_texts}  
+  end
+
 
   def last_requests
     size = current_user.requests.size

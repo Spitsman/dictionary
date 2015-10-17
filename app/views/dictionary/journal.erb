@@ -4,7 +4,12 @@
 
 </br><a data-method="delete" href="/journal/destroy">Delete journal</a></br></br>
 
-
-<% @requests.each do |request| %> 
-	<%= request.lang %>  <%= request.text %><br/>
+=============================================<br/>
+<% current_user.requests.each do |request| %> 
+	Lang: <%= request.lang %>  Text: <%= request.text %><br/><br/>
+	texts:  <%= request.texts %> <br/>
+	positions:  <%= request.positions %> <br/>
+	transcriptions:  <%= request.transcriptions %> <br/>
+	translation_texts:  <%= request.translation_texts %> <br/>
+	=============================================<br/>
 <% end %>
