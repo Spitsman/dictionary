@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151020133712) do
+ActiveRecord::Schema.define(version: 20151020162855) do
 
   create_table "articles", force: :cascade do |t|
     t.integer  "request_id"
@@ -28,6 +28,18 @@ ActiveRecord::Schema.define(version: 20151020133712) do
     t.text     "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "translation_articles", force: :cascade do |t|
+    t.integer "article_id"
+    t.text    "text"
+    t.text    "position"
+    t.text    "gender"
+    t.text    "animated"
+    t.text    "synonym"
+    t.text    "meaning"
+    t.text    "example"
+    t.text    "aspect"
   end
 
   create_table "users", force: :cascade do |t|

@@ -5,13 +5,24 @@
 </br><a data-method="delete" href="/journal/destroy">Delete journal</a></br></br>
 
 
-<% @requests.each do |request| %> 
-	Lang: <%= request.lang %>  Text: <%= request.text %><br/><br/>
-	<%	request.articles.all.each do |article| %>
-		text:  <%= article.text %> <br/>
-		position:  <%= article.position %> <br/>
-		transcription:  <%= article.transcription %> <br/>
-		<br/>
+<%@requests.each do |request| %> 
+		Lang: <%= request.lang %>  Text: <%= request.text %><br/><br/>
+<%	request.articles.each do |article| %>
+			text:  					<%= article.text 					%> <br/>
+			position:  			<%= article.position 			%> <br/>
+			transcription:  <%= article.transcription %> <br/>
+			translation: 																 <br/>
+		<% article.translation_articles.each do |x| %>
+				__text:  			<%= x.text 		 	%><br/>
+				__position: 	<%= x.position 	%><br/>
+				__gender:  		<%= x.gender 		%><br/>
+				__animated:  	<%= x.animated 	%><br/>
+				__synonym:		<%= x.synonym 	%><br/>
+				__meaning:  	<%= x.meaning 	%><br/>
+				__example:  	<%= x.example 	%><br/>
+				__aspect:  		<%= x.aspect 		%><br/>
+		<%end%>
+			<br/>
 	<% end %>
 	=============================================<br/>
 <% end %>
