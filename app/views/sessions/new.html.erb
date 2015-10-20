@@ -1,10 +1,9 @@
 <h1>Log in</h1>
 
-
 <%= form_for(:session, url: login_path) do |f| %> 
   <%= f.text_field :username, :placeholder => "Username" %> </br>
   <%= f.password_field :password, :placeholder => "Password" %> </br>
   <%= f.submit "Log in", class: "btn-submit" %>
 <% end %>
 
-<p><a href="/signup" data-method="get" rel="nofollow">Sign up</a>
+<p><%= link_to('/signup' ){ 'Sign up' } %></p>

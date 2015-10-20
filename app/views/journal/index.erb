@@ -1,9 +1,8 @@
 <h1>Journal</h1>
 
-</br><a href="/index">Back</a></br>
+<p><%= link_to('/index'){ 'Back' } %></p>
 
-</br><a data-method="delete" href="/journal/destroy">Delete journal</a></br></br>
-
+<p><%= link_to('/journal/destroy', method: 'delete'){ 'Delete journal' } %></p>
 
 <%@requests.each do |request| %> 
 		Lang: <%= request.lang %>  Text: <%= request.text %><br/><br/>

@@ -1,6 +1,6 @@
 <h1>Lookup</h1>
 
-<a href="/index">Back</a></br></br>
+<p><%= link_to('/index'){ 'Back' } %></p>
 
 <%= params[:text]  if @articles_collection.empty? %>
 
