@@ -4,8 +4,10 @@
 
 <p><%= link_to('/journal/destroy', method: 'delete'){ 'Delete journal' } %></p>
 
+=============================================<br/>
 <%@requests.each do |request| %> 
-		Lang: <%= request.lang %>  Text: <%= request.text %><br/><br/>
+		Lang: <%= request.lang %><br/>  
+		Text: <%= request.text %><br/><br/>
 <%	request.articles.each do |article| %>
 			text:  					<%= article.text 					%> <br/>
 			position:  			<%= article.position 			%> <br/>

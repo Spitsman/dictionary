@@ -15,21 +15,16 @@ class DictionaryController < ApplicationController
     begin
       request = Request.create(lang: params[:lang], text: params[:text])
       articles_collection.map do |article|         
-        art = Article.create(text: article.text, position: article.position, transcription: article.transcription)          
+        new_article = Article.create(text: article.text, position: article.position, transcription: article.transcription)          
         article.translation.map do |tr_art|
-          tr = TranslationArticle.new   
-          tr.text = tr_art.text
-          tr.position = tr_art.position
-          tr.gender = tr_art.gender
-          tr.animated = tr_art.animated
-          tr.synonym = tr_art.synonym.to_s
-          tr.meaning = tr_art.meaning.to_s
-          tr.example = tr_art.example.to_s
-          tr.aspect = tr_art.aspect
-          tr.save
-          art.translation_articles.push tr
+          new_tr_art = TranslationArticle.create(
+            text: tr_art.text,              position: tr_art.position,
+            gender: tr_art.gender,          animated: tr_art.animated, 
+            synonym: tr_art.synonym.to_s,   meaning: tr_art.meaning.to_s, 
+            example: tr_art.example.to_s,   aspect: tr_art.aspect)  
+          new_article.translation_articles.push new_tr_art
         end
-        request.articles.push art
+        request.articles.push new_article
       end
       current_user.requests.push request
     rescue Exception => error
