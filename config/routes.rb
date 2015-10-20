@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root 'dictionary#index'
  	get "index" => 'dictionary#index'
   post "lookup" => "dictionary#lookup"
-  get "journal" => "dictionary#journal"
-  delete "journal/destroy" => "dictionary#destroy"
+  get "journal/index" => "journal#index"
+  delete "journal/destroy" => "journal#destroy"
   get "signup" => "users#new"
   resources :users
   get 'login' => 'sessions#new'

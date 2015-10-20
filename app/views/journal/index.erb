@@ -1,0 +1,17 @@
+<h1>Journal</h1>
+
+</br><a href="/index">Back</a></br>
+
+</br><a data-method="delete" href="/journal/destroy">Delete journal</a></br></br>
+
+
+<% @requests.each do |request| %> 
+	Lang: <%= request.lang %>  Text: <%= request.text %><br/><br/>
+	<%	request.articles.all.each do |article| %>
+		text:  <%= article.text %> <br/>
+		position:  <%= article.position %> <br/>
+		transcription:  <%= article.transcription %> <br/>
+		<br/>
+	<% end %>
+	=============================================<br/>
+<% end %>
