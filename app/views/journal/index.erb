@@ -2,7 +2,7 @@
 
 <p><%= link_to('/index'){ 'Back' } %></p>
 
-<p><%= link_to('/journal/destroy', method: 'delete'){ 'Delete journal' } %></p>
+<p><%= link_to('/journal/destroy', method: 'delete', data: { confirm: 'Are you sure?' }){ 'Delete journal' } %></p>
 
 =============================================<br/>
 <%@requests.each do |request| %> 
@@ -13,15 +13,16 @@
 			position:  			<%= article.position 			%> <br/>
 			transcription:  <%= article.transcription %> <br/>
 			translation: 																 <br/>
-		<% article.translation_articles.each do |x| %>
-				__text:  			<%= x.text 		 	%><br/>
-				__position: 	<%= x.position 	%><br/>
-				__gender:  		<%= x.gender 		%><br/>
-				__animated:  	<%= x.animated 	%><br/>
-				__synonym:		<%= x.synonym 	%><br/>
-				__meaning:  	<%= x.meaning 	%><br/>
-				__example:  	<%= x.example 	%><br/>
-				__aspect:  		<%= x.aspect 		%><br/>
+		<% article.translation_articles.each do |tr_art| %>
+				__text:  			<%= tr_art.text 		 	%><br/>
+				__position: 	<%= tr_art.position 	%><br/>
+				__gender:  		<%= tr_art.gender 		%><br/>
+				__animated:  	<%= tr_art.animated 	%><br/>
+				__synonym:		<%= tr_art.synonym 		%><br/>
+				__meaning:  	<%= tr_art.meaning 		%><br/>
+				__example:  	<%= tr_art.example 		%><br/>
+				__aspect:  		<%= tr_art.aspect 		%><br/>
+				<br/>
 		<%end%>
 			<br/>
 	<% end %>

@@ -4,7 +4,7 @@ class DictionaryController < ApplicationController
 
   def index
     begin
-      @langs = dictionary.get_langs
+      @langs_collection = dictionary.get_langs
       @last = current_user.requests.last(10)
     rescue Exception => error
       render :text => error.message
@@ -15,14 +15,9 @@ class DictionaryController < ApplicationController
     begin
       request = Request.create(lang: params[:lang], text: params[:text])
       articles_collection.map do |article|         
-        new_article = Article.create(text: article.text, position: article.position, transcription: article.transcription)          
-        article.translation.map do |tr_art|
-          new_tr_art = TranslationArticle.create(
-            text: tr_art.text,              position: tr_art.position,
-            gender: tr_art.gender,          animated: tr_art.animated, 
-            synonym: tr_art.synonym.to_s,   meaning: tr_art.meaning.to_s, 
-            example: tr_art.example.to_s,   aspect: tr_art.aspect)  
-          new_article.translation_articles.push new_tr_art
+        new_article = Article.create(article.attributes)          
+        article.translation.map do |translation_article|
+          new_article.translation_articles.create(translation_article.attributes)
         end
         request.articles.push new_article
       end

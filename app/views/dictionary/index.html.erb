@@ -7,7 +7,7 @@
 
 <%= form_tag('/lookup', method: "p ost") do %>
   <p> <%= label_tag(:lang, 'Lang') %>
-	<% lang_list = @langs.map{ |lang| [lang ,lang] } %>
+	<% lang_list = @langs_collection.map{ |lang| [lang ,lang] } %>
 	<p><%= select_tag(:lang, options_for_select(lang_list, 'en-ru'))%>
 	<p><%= label_tag(:text, 'Text') %>
 	<p><%= text_area_tag(:text) %>
