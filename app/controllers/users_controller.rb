@@ -1,7 +1,16 @@
 class UsersController < ApplicationController
 
+	before_action :require_admin, only: [:show]
+
+	def show
+		@users_collection = User.all
+	end
+
 	def new
   	@user = User.new
+	end
+
+	def profile
 	end
 
 	def create 
