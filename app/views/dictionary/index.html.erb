@@ -27,7 +27,7 @@
 	<%= request.lang %>  <%= request.text %><br/>
 <% end %>
 
-<p><%= link_to('/journal/index'){ 'Journal' } %>
+<p><%= link_to "Journal", journal_path(id: current_user) %>
 
 <center>
 	Реализовано с помощью сервиса <%= link_to('http://api.yandex.ru/dictionary/'){ '«Яндекс.Словарь»'} %>

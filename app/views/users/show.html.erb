@@ -1,9 +1,13 @@
 <h1>Users list</h1>
 
-<p><%= link_to('/index'){ 'Back' } %></p><br/>
+<p><%= link_to('/index'){ 'Main page' } %></p><br/>
 
 <% @users_collection.each do |user| %>
 	<p>
-		<%= user.username %>, <%= user.requests.size %> request(s). 
+		<%= user.username %>: <%= user.requests.size %> request(s). 
+		User's journal:
+		<%= link_to "show", journal_path(id: user) %>
+		,
+		<%= link_to(journal_destroy_path(id: user), method: 'delete', data: { confirm: 'Are you sure?' }){'delete'} %>
 	</p>
 <% end %>

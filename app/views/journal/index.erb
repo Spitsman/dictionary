@@ -1,8 +1,9 @@
 <h1>Journal</h1>
 
-<p><%= link_to('/index'){ 'Back' } %></p>
+<p><%= link_to('/index'){ 'Main page' } %></p>
 
-<p><%= link_to('/journal/destroy', method: 'delete', data: { confirm: 'Are you sure?' }){ 'Delete journal' } %></p>
+<p><%= link_to(journal_destroy_path(current_user), method: 'delete', data: { confirm: 'Are you sure?' }){'Delete'} %><br/>
+
 
 =============================================<br/>
 <%@requests.each do |request| %> 
