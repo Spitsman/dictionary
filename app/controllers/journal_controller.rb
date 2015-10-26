@@ -22,7 +22,7 @@ class JournalController < ApplicationController
 	protected
 
 	def abuse_of_authority?
-		!current_user.admin? && User.find(params[:id])!=current_user
+		!current_user.admin? && User.find(params[:id]) != current_user
 	end
 	
 end
