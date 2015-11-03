@@ -1,8 +1,8 @@
 <h1>Journal</h1>
 
-<p><%= link_to('/index'){ 'Main page' } %></p>
+<p><%= link_to  'Main page', '/index' %></p>
 
-<p><%= link_to(journal_destroy_path(current_user), method: 'delete', data: { confirm: 'Are you sure?' }){'Delete'} %><br/>
+<p><%= link_to 'Delete', journal_destroy_path(current_user), method: 'delete', data: { confirm: 'Are you sure?' } %><br/>
 
 
 =============================================<br/>

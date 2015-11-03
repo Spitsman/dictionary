@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-	before_action :require_admin, only: [:show]
+	before_action :require_no_user, only: [:create, :new]
 
 	def show
 		@users_collection = User.all
@@ -15,27 +15,17 @@ class UsersController < ApplicationController
 
 	def create 
 	  @user = User.new(user_params)
-	  if @user.valid? && password_confirmed? && unique_user?
-	  	@user.save
-	    session[:user_id] = @user.id 
-	    redirect_to '/index' 
+	  if @user.save
+	    redirect_to root_path
 	  else 
-	    redirect_to '/signup' 
+	    redirect_to signup_path 
 	  end 
 	end
 
 	private
 
 	def user_params
-    params.require(:user).permit(:username, :password)
-  end
-
-  def unique_user? 	
-  	!User.exists?(username: params[:user][:username])
-  end
-
-  def password_confirmed?
-  	params[:user][:password] == params[:user][:confirm_password]
+    params.require(:user).permit(:username, :password, :password_confirmation, :email)
   end
 
 end

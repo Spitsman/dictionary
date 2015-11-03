@@ -1,6 +1,6 @@
 <h1>Profile</h1>
 
-<p><%= link_to('/index'){ 'Main page' } %></p><br/>
+<p><%= link_to  'Main page', '/index' %></p>
 
 <p>Username: <%= current_user.username %>
 <p>Last request options: <%= current_user.requests.last(1).first.lang%> 

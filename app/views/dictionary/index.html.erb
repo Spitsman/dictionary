@@ -1,24 +1,20 @@
 <h1> Yandex Dictionary</h1>
 
 <p>
-	Hello, <%= link_to ('/profile'){  current_user.username } %>. 
-	<%= link_to('/logout', method: 'delete' ){ 'Logout' } %><br/>
+	Hello, <%= link_to current_user.username, '/profile'  %>. 
+	<%= link_to 'Logout', logout_path, method: 'delete' %><br/>
 </p>
 
-<% if current_user && current_user.admin? %> 
-  <p> 
-    <%= link_to('/users/show' ){ 'Users list' } %>
-  </p> 
-<% end %>
+<p> <%= link_to 'Users list', '/users/show'  %> </p>
 
 <br/>
-<%= form_tag('/lookup', method: "post") do %>
-  <p> <%= label_tag(:lang, 'Lang: ') %>
+<%= form_tag '/lookup', method: "post" do %>
+  <p> <%= label_tag :lang, 'Lang: ' %>
 	<% lang_list = @langs_collection.map{ |lang| [lang ,lang] } %>
-	<%= select_tag(:lang, options_for_select(lang_list, 'en-ru'))%>
-	<p><%= label_tag(:text, 'Text: ') %>
-	<%= text_area_tag(:text) %>
-	<p><%= submit_tag('Search') %>
+	<%= select_tag :lang, options_for_select(lang_list, 'en-ru')%>
+	<p><%= label_tag :text, 'Text: ' %>
+	<%= text_area_tag :text %>
+	<p><%= submit_tag 'Search' %>
 <% end %>
 
 
@@ -30,5 +26,5 @@
 <p><%= link_to "Journal", journal_path(id: current_user) %>
 
 <center>
-	Реализовано с помощью сервиса <%= link_to('http://api.yandex.ru/dictionary/'){ '«Яндекс.Словарь»'} %>
+	Реализовано с помощью сервиса <%= link_to '«Яндекс.Словарь»', 'http://api.yandex.ru/dictionary/'%>
 <center>
