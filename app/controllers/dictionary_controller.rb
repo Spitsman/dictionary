@@ -13,11 +13,8 @@ class DictionaryController < ApplicationController
 
   def lookup
     begin
-      current_user.requests.create(
-        lang: params[:lang], 
-        text: params[:text], 
-        articles: parse_articles_collection
-      )            
+      current_user.requests.create(build_request)
+                
     rescue Exception => error
       render :text => error.message
     end   
@@ -25,7 +22,11 @@ class DictionaryController < ApplicationController
 
   protected
 
-  def parse_articles_collection
+  def build_request
+    {lang: params[:lang], text: params[:text], articles: build_articles_collection}
+  end
+
+  def build_articles_collection
     articles_array = Array.new
     articles_collection.map do |article|         
       new_article = Article.create(article.attributes)          
