@@ -5,7 +5,8 @@
 	<%= link_to 'Logout', logout_path, method: 'delete' %><br/>
 </p>
 
-<p> <%= link_to 'Users list', '/users/show'  %> </p>
+
+<p> <%= link_to 'Users list', '/users/show' if UserPolicy.new(current_user).show? %> </p>
 
 <br/>
 <%= form_tag '/lookup', method: "post" do %>

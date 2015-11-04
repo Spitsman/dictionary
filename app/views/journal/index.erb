@@ -2,7 +2,7 @@
 
 <p><%= link_to  'Main page', '/index' %></p>
 
-<p><%= link_to 'Delete', journal_destroy_path(current_user), method: 'delete', data: { confirm: 'Are you sure?' } %><br/>
+<p><%= link_to 'Delete', journal_destroy_path(id: current_user.id), method: 'delete', data: { confirm: 'Are you sure?' } %><br/>
 
 
 =============================================<br/>

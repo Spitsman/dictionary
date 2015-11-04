@@ -6,8 +6,8 @@
 	<p>
 		<%= user.username %>: <%= user.requests.size %> request(s). 
 		User's journal:
-		<%= link_to 'show', journal_path(id: user) %>
+		<%= link_to 'show', journal_path(id: user), method: 'post' %>
 		,
-		<%= link_to 'delete', journal_destroy_path(id: user), method: 'delete', data: { confirm: 'Are you sure?' } %>
+		<%= link_to 'delete', journal_destroy_path(id: user.id), method: 'delete', data: { confirm: 'Are you sure?' } %>
 	</p>
 <% end %>
