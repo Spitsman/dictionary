@@ -6,4 +6,4 @@
 <p>E-mail: <%= current_user.email %>	
 <p>Last request options: <%= current_user.requests.last(1).first.lang if defined? current_user.requests.last(1).first.lang%> 
 	<%= current_user.requests.last(1).first.text if defined? current_user.requests.last(1).first.text %>
-<p>Last request time: <%= current_user.requests.last(1).first.created_at %>
+<p>Last request time: <%= current_user.requests.last(1).first.created_at if defined? current_user.requests.last(1).first.created_at  %>
