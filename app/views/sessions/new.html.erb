@@ -1,6 +1,10 @@
 <h1>Log in</h1>
 
-<%= form_for :user_session, url: login_path do |f| %> 
+
+<%= form_for resource_session, url: login_path do |f| %> 
+	<%= f.error_messages :header_message => nil,
+  	:message => nil,
+  	:header_tag => :h3 %>
   <%= f.text_field :username, :placeholder => "Username" %> </br>
   <%= f.password_field :password, :placeholder => "Password" %> </br>
   <%= f.submit "Log in", class: "btn-submit" %>

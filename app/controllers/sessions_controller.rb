@@ -1,17 +1,18 @@
 class SessionsController < ApplicationController
 
 	before_action :require_no_user, only: [:new, :create]
+	helper_method :resource_session
 
 	def new
-		@user_session = UserSession.new
+		resource_session
 	end
 	
 	def create
-		@user_session = UserSession.new(user_session_params)
-		if @user_session.save
+		resource_session
+		if resource_session.save
 			redirect_to root_path
 		else
-			redirect_to login_path
+			render :new
 		end
 	end
 
@@ -21,8 +22,8 @@ class SessionsController < ApplicationController
 	end
 	
 	private
-
-	def user_session_params
-    params.require(:user_session).permit(:username, :password)
+	
+  def resource_session
+  	@resource_session ||= UserSession.new(params[:user_session])
   end
 end

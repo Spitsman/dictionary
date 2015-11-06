@@ -2,7 +2,7 @@
 
 <p><%= link_to  'Main page', '/index' %></p></br>
 
-<% @users_collection.each do |user| %>
+<% users_collection.each do |user| %>
 	<p>
 		<%= user.username %>: <%= user.requests.size %> request(s). 
 		User's journal:

@@ -15,11 +15,12 @@ gem 'jquery-rails'
 
 gem 'dictionary_api'
 # Use ActiveModel has_secure_password
-gem 'bcrypt', '~> 3.1.7'
+#gem 'bcrypt', '~> 3.1.7'
+gem 'dynamic_form'
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  gem 'debugger'
+  #gem 'debugger'
 end
 
 group :development do
