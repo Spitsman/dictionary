@@ -1,13 +1,13 @@
 <h1>Users list</h1>
 
-<p><%= link_to  'Main page', '/index' %></p></br>
+<p><%= link_to  'Main page', root_path %></p></br>
 
 <% users_collection.each do |user| %>
 	<p>
 		<%= user.username %>: <%= user.requests.size %> request(s). 
 		User's journal:
-		<%= link_to 'show', journal_path(id: user), method: 'post' %>
+		<%= link_to 'show', journal_path(required_user: user) %>
 		,
-		<%= link_to 'delete', journal_destroy_path(id: user.id), method: 'delete', data: { confirm: 'Are you sure?' } %>
+		<%= link_to 'delete', journal_destroy_path(required_user: user), method: 'delete', data: { confirm: 'Are you sure?' } %>
 	</p>
 <% end %>

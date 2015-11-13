@@ -7,7 +7,7 @@ class UserPolicy
   end
 
 	def show?
-		user.admin?
+		@user.admin?
 	end
 	
 end

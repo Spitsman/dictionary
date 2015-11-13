@@ -1,22 +1,19 @@
 class UsersController < ApplicationController
 
 	before_action :require_no_user, only: [:create, :new]
+	before_action :authorize, only: [:show]
 	helper_method :resource_user, :users_collection
 
 	def show
-		authorize
-		users_collection
 	end
 
 	def new
-		resource_user
 	end
 
 	def profile
 	end
 
 	def create 
-	  resource_user
 	  if resource_user.save
 	    redirect_to root_path
 	  else 
@@ -36,7 +33,11 @@ class UsersController < ApplicationController
 	end
 
   def authorize
-  	redirect_to root_path unless UserPolicy.new(current_user).show?
+  	redirect_to root_path unless user_policy.show?
+  end
+
+  def user_policy
+  	@user_policy ||= UserPolicy.new(current_user)
   end
 
 end

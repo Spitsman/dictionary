@@ -1,10 +1,5 @@
 <h1> Yandex Dictionary</h1>
 
-<p>
-	Hello, <%= link_to current_user.username, '/profile'  %>. 
-	<%= link_to 'Logout', logout_path, method: 'delete' %><br/>
-</p>
-
 
 <p> <%= link_to 'Users list', '/users/show' if UserPolicy.new(current_user).show? %> </p>
 
@@ -24,8 +19,5 @@
 	<%= request.lang %>  <%= request.text %><br/>
 <% end %>
 
-<p><%= link_to "Journal", journal_path(id: current_user) %>
-
-<center>
-	Реализовано с помощью сервиса <%= link_to '«Яндекс.Словарь»', 'http://api.yandex.ru/dictionary/'%>
-<center>
+<p><%= link_to "Journal", journal_path(required_user: current_user) %>
+ 

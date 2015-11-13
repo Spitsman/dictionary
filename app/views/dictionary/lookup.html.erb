@@ -9,15 +9,18 @@
 	transcription: <%= art.transcription %> <br/>
 	translation: <br/>
 	<% art.translation.each do |x| %>
-		__text: <%= x.text	if x.text %> <br/>	
-		__position: <%= x.position  if x.position %> <br/>
-		__gender: 	<%= x.gender		if x.gender	%><br/>
-		__animated: <%= x.animated 	if x.animated %><br/>
-		__synonym: 	<%= x.synonym  	if x.synonym %><br/>
-		__meaning: 	<%= x.meaning  	if x.meaning %><br/>
-		__example: 	<%= x.example  	if x.example %><br/>
-		__aspect: 	<%= x.aspect 		if x.aspect %><br/>
+	<ul>
+		text: <%= x.text	if x.text %> <br/>	
+		position: <%= x.position  if x.position %> <br/>
+		gender: 	<%= x.gender		if x.gender	%><br/>
+		animated: <%= x.animated 	if x.animated %><br/>
+		synonym: 	<%= x.synonym  	if x.synonym %><br/>
+		meaning: 	<%= x.meaning  	if x.meaning %><br/>
+		example: 	<%= x.example  	if x.example %><br/>
+		aspect: 	<%= x.aspect 		if x.aspect %><br/>
 		<br/>
+	</ul>
 	<% end %>
-	=================</p>
-<% end %>
+	<hr width=400 align=left>
+
+	<% end %>

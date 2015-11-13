@@ -2,16 +2,17 @@ Rails.application.routes.draw do
   root 'dictionary#index'
  	get "index" => 'dictionary#index'
   post "lookup" => "dictionary#lookup"
-  get "journal/index" => "journal#index"
+
+  get '/journal' => 'journal#index', as: :journal
   delete "journal/destroy" => "journal#destroy", as: :journal_destroy
-  get "signup" => "users#new", as: :signup
-  resources :users
+
   get 'login' => 'sessions#new', as: :login
   post "login" => "sessions#create"
   delete 'logout' => 'sessions#destroy', as: :logout
+
   get 'profile' => 'users#profile'
-  get 'users/show' => 'users#show'
-  post '/journal' => 'journal#index', as: :journal
-  get '/journal' => 'journal#index', as: :my_journal
+  get 'users/show' => 'users#show', as: :show_users
+  get "signup" => "users#new", as: :signup
+  resources :users  
 end
 

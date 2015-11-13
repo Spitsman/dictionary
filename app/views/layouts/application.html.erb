@@ -1,19 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Dictionary</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+	<head>
+
+		<title>Dictionary</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+
+	   <style>
+		   .leftstr, .rightstr {
+		    float: left; /* Обтекание справа */ 
+		    width: 50%; /* Ширина текстового блока */ 
+		   }
+		   .rightstr {
+		    text-align: right; /* Выравнивание по правому краю */ 
+		   }
+	  </style>
+	</head>
+
+	<body>
+
+		<% if current_user %>
+
+			<p class="leftstr">
+				Hello, <%= link_to current_user.username, '/profile'  %>. 
+				<%= link_to 'Logout', logout_path, method: 'delete' %><br/>
+			</p>
+
+			<p class="rightstr">
+				Реализовано с помощью сервиса <%= link_to '«Яндекс.Словарь»', 'http://api.yandex.ru/dictionary/'%>
+			</p>
+	
+			<div style="clear: left"></div>
+
+			<hr>
+		<% end %>
 
 
-<body>
+		<%= yield %>
 
-<%= yield %>
-
-
-
-
-</body>
+	</body>
 </html>

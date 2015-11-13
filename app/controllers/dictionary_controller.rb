@@ -4,20 +4,14 @@ class DictionaryController < ApplicationController
   helper_method :articles_collection, :langs_collection, :last_collection
 
   def index
-    begin
-      langs_collection
-      last_collection
-    rescue Exception => error
-      render :text => error.message
-    end
+  rescue Exception => error
+    render :text => error.message
   end
 
   def lookup
-    begin
-      current_user.requests.create(build_request)                
-    rescue Exception => error
-      render :text => error.message
-    end   
+    current_user.requests.create(build_request)                
+  rescue Exception => error
+    render :text => error.message
   end
 
   protected
@@ -53,6 +47,6 @@ class DictionaryController < ApplicationController
       articles_array.push new_article
     end
     articles_array
-  end 
+  end   
 
 end
