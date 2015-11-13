@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'profile' => 'users#profile'
   get 'users/show' => 'users#show', as: :show_users
   get "signup" => "users#new", as: :signup
+  delete 'destroy' => 'users#destroy', as: :destroy_user
   resources :users  
 end
 

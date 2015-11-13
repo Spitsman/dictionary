@@ -21,6 +21,11 @@ class UsersController < ApplicationController
 	  end 
 	end
 
+	def destroy
+		User.find(current_user).destroy
+		redirect_to root_path
+	end
+
 	private
 
 	def users_collection

@@ -8,3 +8,4 @@
 	<%= current_user.requests.last(1).first.text if defined? current_user.requests.last(1).first.text %>
 <p>Last request time: <%= current_user.requests.last(1).first.created_at if defined? current_user.requests.last(1).first.created_at  %>
 <p><%= link_to "Journal", journal_path(required_user: current_user) %>
+<p><%= link_to "Delete account", destroy_user_path, method: 'delete' %>
