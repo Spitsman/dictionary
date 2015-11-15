@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 	end
 
 	def destroy
-		User.find(current_user).destroy
+		User.find(params[:required_user]).destroy
 		redirect_to root_path
 	end
 

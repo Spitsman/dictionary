@@ -33,8 +33,13 @@
 	
 			<div style="clear: left"></div>
 
+			<% if UserPolicy.new(current_user).show?  %>
+				Admin Panel: <%= link_to 'Users list', '/users/show' %>
+			<% end %>
 			<hr>
 		<% end %>
+
+
 
 
 		<%= yield %>

@@ -8,7 +8,7 @@ class JournalController < ApplicationController
 
   def destroy
     User.find(required_user).requests.destroy_all
-    redirect_to root_path 
+    redirect_to root_path
   end
 
   private

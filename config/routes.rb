@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post "lookup" => "dictionary#lookup"
 
   get '/journal' => 'journal#index', as: :journal
-  delete "journal/destroy" => "journal#destroy", as: :journal_destroy
+  delete "journal/destroy" => "journal#destroy", as: :destroy_journal
 
   get 'login' => 'sessions#new', as: :login
   post "login" => "sessions#create"

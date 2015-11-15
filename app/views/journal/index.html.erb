@@ -2,7 +2,7 @@
 
 <p><%= link_to  'Main page', '/index' %></p>
 
-<p><%= link_to 'Delete', journal_destroy_path(required_user: current_user), method: 'delete', data: { confirm: 'Are you sure?' } %><br/>
+<p><%= link_to 'Delete', destroy_journal_path(required_user: current_user), method: 'delete', data: { confirm: 'Are you sure?' } %><br/>
 
 
 <hr width=400 align=left>
@@ -16,19 +16,20 @@
 			transcription:  <%= article.transcription %> <br/>
 			translation: 																 <br/>
 			<ul>
-		<% article.translation_articles.each do |tr_art| %>
-				text:  			<%= tr_art.text 		 	%><br/>
-				position: 	<%= tr_art.position 	%><br/>
-				gender:  		<%= tr_art.gender 		%><br/>
-				animated:  	<%= tr_art.animated 	%><br/>
-				synonym:		<%= tr_art.synonym 		%><br/>
-				meaning:  	<%= tr_art.meaning 		%><br/>
-				example:  	<%= tr_art.example 		%><br/>
-				aspect:  		<%= tr_art.aspect 		%><br/>
-				<br/>
-		<%end%>
-	</ul>
+				<% article.translation_articles.each do |tr_art| %>
+						text:  			<%= tr_art.text 		 	%><br/>
+						position: 	<%= tr_art.position 	%><br/>
+						gender:  		<%= tr_art.gender 		%><br/>
+						animated:  	<%= tr_art.animated 	%><br/>
+						synonym:		<%= tr_art.synonym 		%><br/>
+						meaning:  	<%= tr_art.meaning 		%><br/>
+						example:  	<%= tr_art.example 		%><br/>
+						aspect:  		<%= tr_art.aspect 		%><br/>
+						<br/>
+				<%end%>
+			</ul>
 			<br/>
 	<% end %>
+	
 <hr width=400 align=left>
 <% end %>

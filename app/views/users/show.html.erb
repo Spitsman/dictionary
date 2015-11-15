@@ -8,6 +8,8 @@
 		User's journal:
 		<%= link_to 'show', journal_path(required_user: user) %>
 		,
-		<%= link_to 'delete', journal_destroy_path(required_user: user), method: 'delete', data: { confirm: 'Are you sure?' } %>
+		<%= link_to 'delete journal', destroy_journal_path(required_user: user), method: 'delete', data: { confirm: 'Are you sure?' } %>
+		,
+		<%= link_to 'delete user', destroy_user_path(required_user: user), method: 'delete', data: { confirm: 'Are you sure?' } %>
 	</p>
 <% end %>
