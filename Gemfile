@@ -3,7 +3,6 @@ gem 'bootstrap-sass'
 gem 'authlogic'
 gem 'pundit'
 gem 'rails', '4.2.4'
-# Use sqlite3 as the database for Active Record
 
 gem 'uglifier'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -23,21 +22,21 @@ group :development, :test do
   gem 'sqlite3'
 end
 
-group :development do
+#group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-  gem 'sqlite3'
+#  gem 'web-console', '~> 2.0'
+#  gem 'sqlite3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   #gem 'spring'
-end
+#end
 
 group :production do
 	gem 'pg'
 end
 
-group :assets do
-	gem 'therubyracer'
-	#gem 'sass-rails'
-	gem 'coffee-rails'
-	gem 'uglifier'
-end
+#group :assets do
+#	gem 'therubyracer'
+#	#gem 'sass-rails'
+#	gem 'coffee-rails'
+#	gem 'uglifier'
+#end
