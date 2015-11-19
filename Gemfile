@@ -5,7 +5,7 @@ gem 'pundit'
 gem 'rails', '4.2.4'
 # Use sqlite3 as the database for Active Record
 
-
+gem 'uglifier'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Use SCSS for stylesheets
@@ -33,4 +33,11 @@ end
 
 group :production do
 	gem 'pg'
+end
+
+group :assets do
+	gem 'therubyracer'
+	#gem 'sass-rails'
+	gem 'coffee-rails'
+	gem 'uglifier'
 end
