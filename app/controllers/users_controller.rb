@@ -8,12 +8,13 @@ class UsersController < ApplicationController
 	end
 
 	def new
+		resource_user
 	end
 
 	def profile
 	end
 
-	def create 
+	def create
 	  if resource_user.save
 	    redirect_to root_path
 	  else 
