@@ -15,6 +15,6 @@ Rails.application.routes.draw do
   get 'signup' => "users#new", as: :signup
   post 'signup' => 'users#create'
   delete 'destroy' => 'users#destroy', as: :destroy_user
-  resources :users  
+ #resources :users  
 end
 
