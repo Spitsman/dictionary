@@ -1,6 +1,6 @@
 class DictionaryController < ApplicationController
 
-  before_action :require_user
+  #before_action :require_user
   helper_method :articles_collection, :langs_collection, :last_collection
 
   def index
@@ -9,7 +9,7 @@ class DictionaryController < ApplicationController
   end
 
   def lookup
-    current_user.requests.create(build_request)                
+    current_user.requests.create(build_request) if current_user
   rescue Exception => error
     render :text => error.message
   end

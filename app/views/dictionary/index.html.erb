@@ -32,12 +32,16 @@
 		<p><%= submit_tag 'Search' %>
 	<% end %>
 </div>
-<div class='last'>
-	<p><center><strong>Last 10 requests:</strong></center></p>
-	<% last_collection.reverse_each do |request| %>
-		<%= request.lang %> - <%= request.text %><br/>
-	<% end %>
-<div>
-
-<p><%= link_to "Journal", journal_path(required_user: current_user) %>
- 
+<% if current_user %>
+	<div class='last'>
+		<p><center><strong>Last 10 requests:</strong></center></p>
+		<% last_collection.reverse_each do |request| %>
+			<%= request.lang %> - <%= request.text %><br/>
+		<% end %>
+	<p><%= link_to "Journal", journal_path(required_user: current_user) %>
+	</div>
+<% else %>
+	<div class='last'>
+		<p> Log in or sign up to save journal of requests </p>
+	</div>
+<% end %> 

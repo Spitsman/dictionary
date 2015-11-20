@@ -19,28 +19,31 @@
 	</head>
 
 	<body>
-
 		<% if current_user %>
-
 			<p class="leftstr">
+				<%= link_to 'Main page.', root_path %>
 				Hello, <%= link_to current_user.username, '/profile'  %>. 
-				<%= link_to 'Logout', logout_path, method: 'delete' %><br/>
+				<%= link_to 'Logout', logout_path, method: 'delete' %><br/>			
+				<% if UserPolicy.new(current_user).show?  %>
+					Admin Panel: <%= link_to 'Users list', '/users/show' %>
+				<% end %>
+			</p>	
+		<% else %>
+			<p class="leftstr">
+				<%= link_to 'Main page.', root_path %>
+				<%= link_to 'Login', login_path %>
+				or
+				<%= link_to 'Signup', signup_path %>
 			</p>
-
-			<p class="rightstr">
-				Реализовано с помощью сервиса <%= link_to '«Яндекс.Словарь»', 'http://api.yandex.ru/dictionary/'%>
-			</p>
-	
-			<div style="clear: left"></div>
-
-			<% if UserPolicy.new(current_user).show?  %>
-				Admin Panel: <%= link_to 'Users list', '/users/show' %>
-			<% end %>
-			<hr>
 		<% end %>
 
+		<p class="rightstr">
+				Реализовано с помощью сервиса <%= link_to '«Яндекс.Словарь»', 'http://api.yandex.ru/dictionary/'%>
+		</p>
+	
+		<div style="clear: left"></div>
 
-
+		<hr>
 
 		<%= yield %>
 
