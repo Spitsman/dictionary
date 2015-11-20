@@ -34,7 +34,7 @@ class UsersController < ApplicationController
 	end
 
 	def resource_user
-		#params.permit!
+		params.permit!
 		@resource_user ||= User.new(params[:user])
 	end
 
