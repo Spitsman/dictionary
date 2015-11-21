@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
 	before_action :require_user, only: [:show, :profile, :destroy]
-	before_action :require_no_user, only: [:create, :new]
+	before_action :require_no_user, only: [:new]
 	before_action :authorize, only: [:show]
 	helper_method :resource_user, :users_collection
 
