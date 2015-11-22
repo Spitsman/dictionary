@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 	end
 
 	def create
-	  if true #resourse_user.save
+	  if resourse_user.save
 	  	redirect_to root_path
 	 	else 
 	 		render :new
