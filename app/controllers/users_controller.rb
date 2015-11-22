@@ -9,15 +9,13 @@ class UsersController < ApplicationController
 	end
 
 	def new
-		user = User.new
-		redirect_to root_path if user.save
 	end
 
 	def profile
 	end
 
 	def create
-	  if resourse_user.save
+	  if true #resourse_user.save
 	  	redirect_to root_path
 	 	else 
 	 		render :new
