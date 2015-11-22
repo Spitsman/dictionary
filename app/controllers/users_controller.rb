@@ -20,9 +20,9 @@ class UsersController < ApplicationController
 		@user.email = params[:user][:email]
 		@user.password = params[:user][:password]
 		@user.password_confirmation = params[:user][:password_confirmation]
-	  if @user.save
-	    redirect_to root_path
-	  else 
+	  #if @user.save
+	  #  redirect_to root_path
+	  #else 
 	  	redirect_to signup_path
 	    #render :new
 	  end 
