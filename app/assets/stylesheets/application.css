@@ -141,8 +141,12 @@ input {
   background-color: #373A3C;
   border-radius: 5px;
   border: 0px none;
+  margin: 1px;
 }
 textarea {
   border-radius: 5px;
   border: 2px solid #373A3C;
+}
+.btn-submit {
+	background-color: #0275D8;
 }
