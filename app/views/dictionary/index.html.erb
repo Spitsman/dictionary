@@ -1,28 +1,9 @@
-<center><h1> Yandex Dictionary</h1></center>
-
-<style>
-	.form {
- 		padding: 25px;
-		background-color: #dff0d8;
-		width: 40%;
-		float: left;
-		margin-left: 50px;.
-	}
-	.last {
-		padding: 25px;
-		background-color: #dff0d8;
-		width: 40%;
-		float: right;
-		margin-right: 50px;.
-	}
-</style>
-
-
+<h1> Yandex Dictionary</h1>
+<br/>
 
 
 <div class='form'>
-	<br/>
-	<center><strong>Look up</strong></center>
+	<strong><p>Look up text</p></strong>
 	<%= form_tag '/lookup', method: "post" do %>
 	  <p> <%= label_tag :lang, 'Lang: ' %>
 		<% lang_list = langs_collection.map{ |lang| [lang ,lang] } %>
@@ -32,16 +13,16 @@
 		<p><%= submit_tag 'Search' %>
 	<% end %>
 </div>
-<% if current_user %>
-	<div class='last'>
-		<p><center><strong>Last 10 requests:</strong></center></p>
+
+<div class="last">
+	<% if current_user %>
+		<p><strong>Last 10 requests:</strong></p>
 		<% last_collection.reverse_each do |request| %>
 			<%= request.lang %> - <%= request.text %><br/>
 		<% end %>
 	<p><%= link_to "Journal", journal_path(required_user: current_user) %>
-	</div>
-<% else %>
-	<div class='last'>
+	<% else %>
 		<p> Log in or sign up to save journal of requests </p>
-	</div>
-<% end %> 
+	<% end %> 
+</div>
+

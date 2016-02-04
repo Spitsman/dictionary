@@ -1,11 +1,38 @@
+<style>
+	table {
+    border-collapse: separate; /* Способ отображения границы */ 
+    width: 40%; 
+		border-spacing: 0px 11px;
+	}
+</style>
+
 <h1>Profile</h1>
 
-<p><%= link_to  'Main page', '/index' %></p>
+<table cellspacing="20">
+	<tbody>
+		<tr> 
+			<td>Username:</td>
+			<td align="right"><%= current_user.username %></td> 
+		</tr>
 
-<p>Username: <%= current_user.username %>
-<p>E-mail: <%= current_user.email %>	
-<p>Last request options: <%= current_user.requests.last(1).first.lang if defined? current_user.requests.last(1).first.lang%> 
-	<%= current_user.requests.last(1).first.text if defined? current_user.requests.last(1).first.text %>
-<p>Last request time: <%= current_user.requests.last(1).first.created_at if defined? current_user.requests.last(1).first.created_at  %>
+		<tr> 
+			<td>E-mail:</td> 
+			<td align="right"> <%= current_user.email %>	</td> 
+		</tr>
+
+		<tr> 
+			<td>Last request options:</td> 
+			<td align="right"> <%= current_user.requests.last(1).first.lang if defined? current_user.requests.last(1).first.lang%> 
+				<%= current_user.requests.last(1).first.text if defined? current_user.requests.last(1).first.text %>
+			</td> 
+		</tr>
+
+		<tr> 
+			<td>Last request time:</td> 
+			<td align="right"> <%= current_user.requests.last(1).first.created_at if defined? current_user.requests.last(1).first.created_at  %></td> 
+		</tr>
+	</tbody>
+</table>
+
 <p><%= link_to "Journal", journal_path(required_user: current_user) %>
-<p><%= link_to "Delete account", destroy_user_path(required_user: current_user), method: 'delete' %>
+<p><%= link_to "Delete account", destroy_user_path(required_user: current_user), method: 'delete'%>

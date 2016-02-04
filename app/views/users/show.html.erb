@@ -1,7 +1,5 @@
 <h1>Users list</h1>
 
-<p><%= link_to  'Main page', root_path %></p></br>
-
 <% users_collection.each do |user| %>
 	<p>
 		<%= user.username %>: <%= user.requests.size %> request(s). 

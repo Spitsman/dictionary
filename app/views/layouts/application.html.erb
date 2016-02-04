@@ -1,51 +1,83 @@
 <!DOCTYPE html>
-<html>
-	<head>
+<html lang="en">
+  <head>
 
-		<title>Dictionary</title>
-	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	  <%= csrf_meta_tags %>
+  	<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %> 
+  	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %> 
+  	<%= csrf_meta_tags %> 
 
-	   <style>
-		   .leftstr, .rightstr {
-		    float: left; /* Обтекание справа */ 
-		    width: 50%; /* Ширина текстового блока */ 
-		   }
-		   .rightstr {
-		    text-align: right; /* Выравнивание по правому краю */ 
-		   }
-	  </style>
-	</head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
 
-	<body>
-		<% if current_user %>
-			<p class="leftstr">
-				<%= link_to 'Main page.', root_path %>
-				Hello, <%= link_to current_user.username, '/profile'  %>. 
-				<%= link_to 'Logout', logout_path, method: 'delete' %><br/>			
-				<% if UserPolicy.new(current_user).show?  %>
-					Admin Panel: <%= link_to 'Users list', '/users/show' %>
-				<% end %>
-			</p>	
-		<% else %>
-			<p class="leftstr">
-				<%= link_to 'Main page.', root_path %>
-				<%= link_to 'Login', login_path %>
-				or
-				<%= link_to 'Signup', signup_path %>
-			</p>
-		<% end %>
+    <title>Dictionary</title>
 
-		<p class="rightstr">
-				Реализовано с помощью сервиса <%= link_to '«Яндекс.Словарь»', 'http://api.yandex.ru/dictionary/'%>
-		</p>
-	
-		<div style="clear: left"></div>
+    <!-- Bootstrap core CSS -->
+    <!--<link href="../../dist/css/bootstrap.min.css" rel="stylesheet">-->
 
-		<hr>
+    <!-- Custom styles for this template -->
+    <!--<link href="../../assets/stylesheets/application.css" rel="stylesheet">-->
+  </head>
 
-		<%= yield %>
+  <body>
 
-	</body>
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <a class="navbar-brand" href="/">Dictionary</a>
+      <ul class="nav navbar-nav">        
+
+        <% if current_user %>        	
+	        <li class="nav-item">
+	          <a class="nav-link" href="/profile">Profile</a>
+	        </li>
+	        <li class="nav-item">	        
+	          <%= link_to 'Log out', logout_path, class: "nav-link", method: "delete" %>
+	        </li>
+	        <% if UserPolicy.new(current_user).show?  %>
+	        	<li class="nav-item">
+	        		<%= link_to 'Users list', '/users/show', class: "nav-link" %>					
+	        	</li>
+					<% end %>
+	      <% else %>	        
+	        <li class="nav-item">
+	          <a class="nav-link" href="/login">Log in</a>
+	        </li>
+
+	        <li class="nav-item">
+	        	<span class="nav-link">or</span>	          
+	        </li>
+	      
+	        <li class="nav-item">
+	          <a class="nav-link" href="/signup">Sing up</a>
+	        </li>
+        <% end %>
+
+      </ul>
+    </nav>
+
+    <div class="container">
+
+      <div class="starter-template">     
+				<p class="lead"> 
+
+					<%= yield %>
+
+				</p>
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
 </html>

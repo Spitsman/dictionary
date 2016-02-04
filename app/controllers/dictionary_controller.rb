@@ -1,6 +1,5 @@
 class DictionaryController < ApplicationController
 
-  #before_action :require_user
   helper_method :articles_collection, :langs_collection, :last_collection
 
   def index

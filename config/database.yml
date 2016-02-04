@@ -20,6 +20,10 @@ test:
   <<: *default
   database: db/test.sqlite3
 
+development:
+  <<: *default
+  database: db/development.sqlite3
+
 production:
   <<: *default
   database: db/production.sqlite3
@@ -30,8 +34,8 @@ production:
 #  encoding: unicode
 #  database: test-postgres_development
 #  pool: 5
-#  username: postgres
-#  password:
+#  username: test-postgres
+#  password: 
 
 #production:
 #  adapter: postgresql

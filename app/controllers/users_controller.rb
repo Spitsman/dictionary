@@ -34,7 +34,6 @@ class UsersController < ApplicationController
 	end
 
 	def resource_user
-		#params.permit!
 		@resource_user ||= User.new(params.require(:user).permit(:username, :email, :password, :password_confirmation))
 	end
 
